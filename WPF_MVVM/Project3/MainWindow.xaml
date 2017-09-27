@@ -1,0 +1,93 @@
+﻿<Window x:Class="Project3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project3"
+        mc:Ignorable="d"
+        Title="Welcome To Information Sciences and Technologies @ R.I.T" Height="350" Width="525">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+
+            <TabControl Margin="10" BorderBrush="Gainsboro" RenderTransformOrigin="0.562,0.634">
+               
+                    <TabControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                        
+                </TabControl.Resources>
+
+
+
+                <TabItem Header="About"  MouseUp="About_Button_Click">
+                
+              
+                <TextBlock Name="AbouttxtOutput" Background="Orange" FontStyle="Italic"  Text="{Binding aboutData}" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap" />
+              
+
+
+                </TabItem>
+            <TabItem Header="UnderGraduate"  MouseUp="UGDegrees_Button_Click">
+                    <TextBlock Name="DegreestxtOutput" Background="LightCoral" Text="{Binding UGDegreesData}" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap" />
+            </TabItem>
+            <TabItem Header="Graduate"  MouseUp="GradDegrees_Button_Click">
+                    <TextBlock Name="GradDegreestxtOutput" Background="YellowGreen" Text="{Binding GradDegreesData}" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap" />
+            </TabItem>
+            <TabItem Header="UnderGraduate Minors"  MouseUp="Minors_Button_Click">
+                    <TextBlock Name="MinorstxtOutput" Background="Honeydew" Text="{Binding MinorsData}" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap" />
+            </TabItem>
+            <TabItem Header="WhereOurStudentsWork"  MouseUp="Map_Button_Click">
+                    <WebBrowser HorizontalAlignment="Left"
+                    Height="400"
+                    Margin="10,10,0,0"
+                    VerticalAlignment="Top"
+                    Width="600"
+                    Name="MainBrowser"/>
+                </TabItem>
+            <TabItem Header="Our People"  MouseUp="People_Button_Click">
+                    <ListBox x:Name="list1" Background="LightCyan">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding imagePath}"  Height="100" Stretch="UniformToFill" />
+                                    <StackPanel Orientation="Vertical">
+                                        <Label FontFamily="Tahoma" FontSize="20" Content="{Binding name}" />
+                                        <Label FontFamily="Tahoma" FontSize="20" Content="{Binding title}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="News"   MouseUp="News_Button_Click">
+                    <TextBlock Name="NewstxtOutput" Background="LightSeaGreen" Text="{Binding NewsData}" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                </TabItem>
+                <TabItem Header="Student Spotlight" MouseUp="We_Button_Click">
+                    <WebBrowser Source="https://www.youtube.com/watch?v=48vVGDqAhrA" Height="300" Width="600"/>
+                </TabItem>
+
+            </TabControl>
+    </Grid>
+    </ScrollViewer>
+</Window>
